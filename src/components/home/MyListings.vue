@@ -1,0 +1,134 @@
+<template>
+   <div class="my-listings">
+        <h1>My car listings</h1>
+        <div class="car-listings">
+            <div class="my-listing">
+                <p id="listing-title">Audi a3 много запазено</p>
+                <img src="https://i.imgur.com/drIOsYl.jpg">
+
+                <div class="listing-props">
+                    <h2>Brand: Audi</h2>
+                    <h3>Model: a3</h3>
+                    <h3>Year: 1998</h3>
+                    <h3>Price: 2500$</h3>
+                </div>
+                <div class="my-listing-buttons">
+                    <a href="/details/:id" class="my-button-list">Details</a>
+                    <a href="#" class="my-button-list">Edit</a>
+                    <a href="#" class="my-button-list">Delete</a>
+                </div>
+            </div>
+            <p class="no-cars"> No cars in database.</p>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    
+}
+</script>
+
+<style scoped>
+.car-listings {
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+    width: 94%;
+    margin: auto;
+}
+
+.my-listing {
+    height: 500px;
+    width: 400px;
+    padding: 20px 30px 0 30px;
+    margin: auto;
+    border: 2px solid black;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-bottom: 30px;
+}
+
+.my-listing img {
+    height: 269px;
+    width: 410px;
+}
+
+.listing-props {
+    display: flex;
+    height: 60px;
+}
+
+h3 {
+    padding: 0 10px 0 30px;
+}
+
+.my-listing-details>p#description-title {
+    font-size: 39px;
+    text-align: center;
+    padding: 30px 0 5px 0;
+    font-weight: bold;
+}
+
+#description-para {
+    font-size: 20px;
+    border: 2px solid black;
+    padding-bottom: 100px;
+    margin-bottom: 40px;
+}
+
+#auto-title {
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    margin: 20px 0 20px 0;
+}
+
+.my-listings-buttons {
+    width: 30%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.my-listing-details {
+    width: 50%;
+    margin: auto;
+}
+
+.my-listing>img {
+    height: 300px;
+    width: 400px;
+}
+
+.no-cars {
+    margin: auto;
+    font-size: 70px;
+}
+
+.my-listing-buttons {
+    width: 90%;
+    margin: auto;
+    margin-top: 34px;
+}
+
+.my-button-list {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    margin: 10px 8px;
+    padding: 11px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#listing-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
