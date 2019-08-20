@@ -46,5 +46,18 @@ export default {
 </script>
 
 <style scoped>
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
 
+.registerbtn:hover {
+    opacity: 1;
+}
 </style>

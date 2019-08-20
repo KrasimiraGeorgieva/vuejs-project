@@ -5,6 +5,7 @@ import MyListings from "@/components/home/MyListings";
 import Register from "@/components/forms/RegisterForm";
 import Login from "@/components/forms/LoginForm";
 import Create from "@/components/forms/CreateForm";
+import Edit from "@/components/forms/EditForm";
 import Details from "@/components/car/DetailsCar";
 
 Vue.use(Router);
@@ -42,6 +43,16 @@ export default new Router({
       path: "/my-listings",
       name: "myListings",
       component: MyListings
+    },
+    {
+      path: "/edit/:id",
+      name: "edit",
+      component: Edit
+    },
+    {
+      path: "/delete/:id",
+      name: "delete",
+      component: Delete
     },
   ]
 });

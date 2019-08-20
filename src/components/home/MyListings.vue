@@ -14,8 +14,8 @@
                 </div>
                 <div class="my-listing-buttons">
                     <a href="/details/:id" class="my-button-list">Details</a>
-                    <a href="#" class="my-button-list">Edit</a>
-                    <a href="#" class="my-button-list">Delete</a>
+                    <a href="/edit/:id" class="my-button-list">Edit</a>
+                    <a href="/delete/:id" class="my-button-list">Delete</a>
                 </div>
             </div>
             <p class="no-cars"> No cars in database.</p>
@@ -131,4 +131,5 @@ h3 {
     font-weight: bold;
     text-align: center;
 }
+
 </style>
