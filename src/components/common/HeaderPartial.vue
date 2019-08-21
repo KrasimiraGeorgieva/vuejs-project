@@ -1,7 +1,7 @@
 <template>
     <nav>
-        <template v-if="isAuth">
-            <a class="active" href="/">Home</a>
+        <template v-if="isAuthenticated">
+            <a class="active" href="/home-logged">Home</a>
             <a href="#">All Listings</a>
             <a href="/my-listings">My Listings</a>
             <a href="/create">Create Listing</a>
@@ -19,13 +19,11 @@
 
 <script>
 export default {
-    
 }
 </script>
 
 <style scoped>
 nav {
-    position: fixed;
     width: 100%;
     background-color: #333;
     overflow: hidden;

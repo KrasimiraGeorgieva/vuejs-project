@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { registerUser } from '@/services/authServices'
-import {required,minLength,maxLength,sameAs} from 'vuelidate/lib/validators'
+import { authenticate } from '@/services/authServices'
+import { required,minLength,maxLength,sameAs } from 'vuelidate/lib/validators'
 
 export default {
     data(){
@@ -38,7 +38,7 @@ export default {
         repeatPass:'',
         }
     },
-    mixins: [registerUser],
+    mixins: [authenticate],
     validations:{
         username:{
             required,
@@ -47,7 +47,7 @@ export default {
         },
         password:{
             required,
-            minLength: minLength(6),
+            minLength: minLength(3),
             maxLength: maxLength(20)
         },
         repeatPass:{
@@ -58,7 +58,10 @@ export default {
     methods: {
         onRegisterClick() {
             this.register(this.username, this.password)
-            .then(res => this.$router.push('/'))
+            .then(userData => {
+                    this.$root.$emit('logged-in', userData.authtoken);
+                    this.$router.push('/home-logged');
+                })
         }
     }
 }

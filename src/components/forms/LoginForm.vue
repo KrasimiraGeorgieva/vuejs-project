@@ -1,17 +1,17 @@
 <template>
    <div id="login">
-        <form action="#" method="post">
+        <form @submit.prevent="onLoginClick">
             <div class="container">
                 <h1>Login</h1>
                 <p>Please enter your credentials.</p>
                 <hr>
 
                 <p>Username</p>
-                <input placeholder="Enter Username" name="username" type="text">
+                <input type="text" v-model="username" placeholder="Enter Username" name="username">
 
                 <p>Password</p>
-                <input type="password" placeholder="Enter Password" name="password"><br />
-                <button type="submit" class="registerbtn">Login</button>
+                <input type="password" v-model="password" placeholder="Enter Password" name="password"><br />
+                <input type="submit" class="registerbtn" value="Login">
             </div>
 
             <div class="container signin">
@@ -23,8 +23,24 @@
 </template>
 
 <script>
+import { authenticate } from '@/services/authServices'
 export default {
-    
+    data() {
+        return {
+            username:'',
+            password:''
+        };
+    },
+    mixins: [authenticate],
+    methods: {
+        onLoginClick() {
+            this.login(this.username, this.password)
+                .then(userData => {
+                    this.$root.$emit('logged-in', userData.authtoken);
+                    this.$router.push('/home-logged');
+                })
+        }
+    }
 }
 </script>
 

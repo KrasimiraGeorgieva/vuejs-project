@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/components/home/Welcome";
+import HomeLogged from "@/components/home/HomeLogged";
 import MyListings from "@/components/home/MyListings";
 import Register from "@/components/forms/RegisterForm";
 import Login from "@/components/forms/LoginForm";
@@ -28,6 +29,11 @@ export default new Router({
       path: "/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/home-logged",
+      name: "homeLogged",
+      component: HomeLogged
     },
     {
       path: "/create",
