@@ -49,10 +49,10 @@ export default new Router({
       name: "edit",
       component: Edit
     },
-    {
-      path: "/delete/:id",
-      name: "delete",
-      component: Delete
-    },
+    // {
+    //   path: "/delete/:id",
+    //   name: "delete",
+    //   component: Delete
+    // },
   ]
 });

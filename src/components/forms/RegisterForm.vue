@@ -1,22 +1,22 @@
 <template>
    <div id="register">
-        <form>
+        <form @submit.prevent="onRegisterClick">
             <div class="container">
                 <h1>Register</h1>
                 <p>Please fill in this form to create an account.</p>
                 <hr>
 
                 <p>Username</p>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <input type="text" placeholder="Enter Username" v-model="$v.username.$model" name="username" required>
 
                 <p>Password</p>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <input type="password" placeholder="Enter Password" v-model="$v.password.$model" name="password" required>
 
                 <p>Repeat Password</p>
-                <input type="password" placeholder="Repeat Password" name="repeatPass" required>
+                <input type="password" placeholder="Repeat Password" v-model="$v.repeatPass.$model" name="repeatPass" required>
                 <hr>
 
-                <button type="submit" class="registerbtn">Register</button>
+                <button type="submit" class="registerbtn" :disabled="$v.$error">Register</button>
             </div>
             <div class="container signin">
                 <p>Already have an account?
@@ -27,8 +27,40 @@
 </template>
 
 <script>
+import { registerUser } from '@/services/authServices'
+import {required,minLength,maxLength,sameAs} from 'vuelidate/lib/validators'
+
 export default {
-    
+    data(){
+        return{
+        username:'',
+        password:'',
+        repeatPass:'',
+        }
+    },
+    mixins: [registerUser],
+    validations:{
+        username:{
+            required,
+            minLength: minLength(3),
+            maxLength: maxLength(20)
+        },
+        password:{
+            required,
+            minLength: minLength(6),
+            maxLength: maxLength(20)
+        },
+        repeatPass:{
+            required,
+            sameAsPassword: sameAs('password')
+        },
+    },
+    methods: {
+        onRegisterClick() {
+            this.register(this.username, this.password)
+            .then(res => this.$router.push('/'))
+        }
+    }
 }
 </script>
 

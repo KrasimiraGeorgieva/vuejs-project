@@ -10,12 +10,13 @@ export default {
 }
 </script>
 
-<style footer>
+<style scoped>
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    height: 20px;
     background-color: #333333;
     color: white;
     text-align: center;

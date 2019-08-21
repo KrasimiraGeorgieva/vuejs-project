@@ -1,13 +1,19 @@
 <template>
     <nav>
-        <a class="active" href="/">Home</a>
-        <a href="#">All Listings</a>
-        <a href="/my-listings">My Listings</a>
-        <a href="/create">Create Listing</a>
-        <div id="profile">
-            <a>Welcome username</a>
-            <a href="/logout">logout</a>
-        </div>
+        <template v-if="isAuth">
+            <a class="active" href="/">Home</a>
+            <a href="#">All Listings</a>
+            <a href="/my-listings">My Listings</a>
+            <a href="/create">Create Listing</a>
+            <div id="profile">
+                <a>Welcome username</a>
+                <a href="/logout">logout</a>
+            </div>
+        </template>
+        
+        <template v-else>
+            <a class="active" href="/">Home</a>
+        </template>
     </nav>
 </template>
 
@@ -19,6 +25,8 @@ export default {
 
 <style scoped>
 nav {
+    position: fixed;
+    width: 100%;
     background-color: #333;
     overflow: hidden;
 }
