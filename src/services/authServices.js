@@ -23,6 +23,8 @@ export const authService = {
     },
     created() {
         this.$root.$on('logged-in', authtoken => this.authtoken = authtoken)
+        this.$root.$on('logged-out', () => this.authtoken = null)
+        this.$root.$on('updated', authtoken => this.authtoken = authtoken)
     }
 }
 
@@ -45,7 +47,8 @@ export const authenticate = {
             }));
         },
         logout() {
-
+            return this.$http.post(`/user/${requester.appKey}/_logout`
+            )
         }
     },
     created() {

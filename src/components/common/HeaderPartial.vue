@@ -19,7 +19,7 @@
             <!-- <a href="/create">Create Listing</a> -->
             <div id="profile">
                 <a>Welcome username</a>
-                <a href="/logout">logout</a>
+                <a href="/logout" v-on:click.prevent="onLogoutClick">logout</a>
             </div>
         </template>
         
@@ -30,7 +30,23 @@
 </template>
 
 <script>
+import { authenticate } from '@/services/authServices'
+
 export default {
+    data() {
+        return {
+        };
+    },
+    mixins: [authenticate],
+    methods: {
+        onLogoutClick() {
+            this.logout().then(userData => {
+                sessionStorage.clear()
+                this.$root.$emit('logged-out', userData.authtoken);
+                this.$router.push('/');
+            })
+        }
+    }
 }
 </script>
 

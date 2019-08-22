@@ -3,6 +3,7 @@
         <div class="my-listing-details">
             <p id="auto-title">{{car.title}}</p>
             <img :src="car.imageUrl">
+            <br />
             <div class="listing-props">
                 <h2>Brand: {{car.brand}}</h2>
                 <h3>Model: {{car.model}}</h3>
@@ -10,16 +11,14 @@
                 <h3>Fuel: {{car.fuel}}</h3>
                 <h3>Price: {{car.price}}$</h3>
             </div>
-            <!-- :to="'/edit/'+ car._id" -->
             <div class="listings-buttons">
                 <router-link
-                    :to="'/edit/:id'"
+                    :to="'/edit/'+ car._id"
                     tag="a"
                     class="button-list"
                 >
                 Edit
                 </router-link>
-                <!-- <a href="#" class="button-list">Edit</a> -->
                 <a href="#" class="button-list">Delete</a>
 
 
@@ -41,7 +40,6 @@ export default {
         this.getById();
     }
 }
-
 </script>
 
 <style scoped>
