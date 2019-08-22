@@ -1,39 +1,57 @@
 <template>
    <div class="listing-details">
         <div class="my-listing-details">
-            <p id="auto-title">Audi a3 много запазено</p>
-            <img src="https://i.imgur.com/drIOsYl.jpg">
+            <p id="auto-title">{{car.title}}</p>
+            <img :src="car.imageUrl">
             <div class="listing-props">
-                <h2>Brand: Audi</h2>
-                <h3>Model: a3</h3>
-                <h3>Year: 1998</h3>
-                <h3>Fuel: Gasoline</h3>
-                <h3>Price: 2500$</h3>
+                <h2>Brand: {{car.brand}}</h2>
+                <h3>Model: {{car.model}}</h3>
+                <h3>Year: {{car.year}}</h3>
+                <h3>Fuel: {{car.fuel}}</h3>
+                <h3>Price: {{car.price}}$</h3>
             </div>
+            <!-- :to="'/edit/'+ car._id" -->
             <div class="listings-buttons">
-
-                <a href="#" class="button-list">Edit</a>
+                <router-link
+                    :to="'/edit/:id'"
+                    tag="a"
+                    class="button-list"
+                >
+                Edit
+                </router-link>
+                <!-- <a href="#" class="button-list">Edit</a> -->
                 <a href="#" class="button-list">Delete</a>
 
 
             </div>
             <p id="description-title">Description:</p>
-            <p id="description-para">Не съм навъртал на колата 100000км в никакъв случай. Като нова е</p>
+            <p id="description-para">{{car.description}}</p>
+            <p class="space"></p>
 
         </div>
     </div>
 </template>
 
 <script>
-export default {
+import { carService } from '@/services/carServices'
 
+export default {
+    mixins: [carService],
+    created(){
+        this.getById();
+    }
 }
+
 </script>
 
 <style scoped>
-#container>div.listing-details>div>img {
+
+div.listing-details>div>img {
     height: 455px;
     width: 800px;
+    text-align: center;
+    display: block;
+    margin: 0 auto
 }
 
 h3 {
@@ -44,6 +62,7 @@ h3 {
     width: 31%;
     margin: auto;
     margin-top: 34px;
+    text-align: center;
 }
 
 .button-list {
@@ -58,11 +77,14 @@ h3 {
     font-size: 16px;
 }
 #description-para {
-    width: 39.8em;
+    /* width: 39.8em; */
+    width: 50%;
     font-size: 20px;
     border: 2px solid black;
     padding-bottom: 100px;
     margin-bottom: 40px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .car-listings {
@@ -83,16 +105,20 @@ h3 {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .my-listing img {
     height: 269px;
     width: 410px;
+    text-align: center;
 }
 
 .listing-props {
+    justify-content: center;
     display: flex;
     height: 60px;
+    text-align: center;
 }
 
 h3 {
@@ -106,11 +132,14 @@ h3 {
     font-weight: bold;
 }
 
-
 #auto-title {
     font-weight: bold;
     font-size: 35px;
     text-align: center;
     margin: 20px 0 20px 0;
+}
+
+.space {
+    margin-top: 50px
 }
 </style>

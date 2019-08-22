@@ -18,14 +18,28 @@
                     <div id="data-buttons">
                         <ul>
                             <li class="action">
-                                <a href="#" class="button-carDetails">Details</a>
+                                <router-link
+                                    :to="'/details/'+ car._id"
+                                    tag="a"
+                                    class="button-carDetails"
+                                >
+                                details
+                                </router-link>
+                                <!-- <a v-bind:href="'/details/'+ car._id" class="button-carDetails">Details</a> -->
                             </li>
                             <li class="action">
-                                <a href="#" class="button-carDetails">edit</a>
+                                <router-link
+                                    :to="'/edit/'+ car._id"
+                                    tag="a"
+                                    class="button-carDetails"
+                                >
+                                edit
+                                </router-link>
+                                <!-- <a href="/edit/:id" class="button-carDetails">edit</a> -->
                             </li>
-                            <li class="action">
+                            <!-- <li class="action">
                                 <a href="#" class="button-carDetails">delete</a>
-                            </li>
+                            </li> -->
 
                         </ul>
                     </div>
@@ -41,7 +55,10 @@
 <script>
 import { carService } from '@/services/carServices'
 export default {
-    mixins: [carService]
+    mixins: [carService],
+    created(){
+        this.getAllCars();
+    }
 }
 </script>
 
