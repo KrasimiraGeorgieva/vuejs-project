@@ -20,7 +20,7 @@
             </div>
             <div class="container signin">
                 <p>Already have an account?
-                    <a href="/login">Sign in</a>.</p>
+                    <router-link :to="'/login'" tag="a">Sign in</router-link>.</p>
             </div>
         </form>
     </div>

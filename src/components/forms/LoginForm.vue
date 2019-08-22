@@ -16,7 +16,7 @@
 
             <div class="container signin">
                 <p>Dont have an account?
-                    <a href="/register">Sign up</a>.</p>
+                    <router-link :to="'/register'" tag="a">Sign up</router-link>.</p>
             </div>
         </form>
     </div>

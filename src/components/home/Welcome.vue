@@ -5,8 +5,8 @@
             <img src="@/assets/finance-car.png" alt="carIntro">
             <h2>Login or register to check out our listings or to make one</h2>
             <div id="button-div">
-                <a href="/login" class="button">Login</a>
-                <a href="register" class="button">Register</a>
+                <router-link :to="'/login'" tag="a" class="button">Login</router-link>
+                <router-link :to="'/register'" tag="a" class="button">Register</router-link>
             </div>
         </div>
     </div>
