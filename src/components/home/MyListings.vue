@@ -18,7 +18,7 @@
                     <a href="/delete/:id" class="my-button-list">Delete</a>
                 </div>
             </div>
-            <p class="no-cars"> No cars in database.</p>
+            <!-- <p class="no-cars"> No cars in database.</p> -->
         </div>
     </div>
 </template>
@@ -103,10 +103,10 @@ h3 {
     width: 400px;
 }
 
-.no-cars {
+/* .no-cars {
     margin: auto;
     font-size: 70px;
-}
+} */
 
 .my-listing-buttons {
     width: 90%;

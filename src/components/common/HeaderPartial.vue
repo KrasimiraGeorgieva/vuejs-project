@@ -2,7 +2,7 @@
     <nav>
         <template v-if="isAuthenticated">
             <a class="active" href="/home-logged">Home</a>
-            <a href="#">All Listings</a>
+            <a href="/home-logged">All Listings</a>
             <a href="/my-listings">My Listings</a>
             <a href="/create">Create Listing</a>
             <div id="profile">

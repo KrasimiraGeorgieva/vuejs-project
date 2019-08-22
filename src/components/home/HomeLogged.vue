@@ -4,16 +4,16 @@
 
         <div id="listings">
 
-            <div class="listing">
-                <p>Audi a3 много запазено</p>
-                <img src="https://i.imgur.com/drIOsYl.jpg">
-                <h2>Brand: Audi</h2>
+            <div class="listing" v-for="car in cars" :key="car._id">
+                <p>{{car.title}}</p>
+                <img :src="car.imageUrl">
+                <h2>Brand: {{car.brand}}</h2>
                 <div class="info">
                     <div id="data-info">
-                        <h3>Seller: kunio</h3>
-                        <h3>Fuel: Gasoline</h3>
-                        <h3>Year: 1998</h3>
-                        <h3>Price: 2500 $</h3>
+                        <h3>Seller: {{car.seller}}</h3>
+                        <h3>Fuel: {{car.fuel}}</h3>
+                        <h3>Year: {{car.year}}</h3>
+                        <h3>Price: {{car.price}} $</h3>
                     </div>
                     <div id="data-buttons">
                         <ul>
@@ -32,15 +32,16 @@
                 </div>
 
             </div>
-            <p class="no-cars">No cars in database.</p>
+            <!-- <p class="no-cars">No cars in database.</p> -->
 
         </div>
     </div>
 </template>
 
 <script>
+import { carService } from '@/services/carServices'
 export default {
-    
+    mixins: [carService]
 }
 </script>
 
@@ -66,8 +67,8 @@ export default {
 }
 
 .listing>img {
-    height: 200px;
-    width: 300px;
+    height: 150px;
+    width: 250px;
 }
 
 .listing>p {
@@ -76,10 +77,10 @@ export default {
     font-weight: bold;
 }
 
-.no-cars {
+/* .no-cars {
     margin: auto;
     font-size: 70px;
-}
+} */
 
 #listings>div>div {
     display: flex;
