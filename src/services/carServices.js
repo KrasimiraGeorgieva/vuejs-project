@@ -19,7 +19,12 @@ export const carService = {
             this.$http.defaults.headers['Authorization'] = `Kinvey ${AuthToken()}`
             return this.$http.get(`appdata/${requester.appKey}/cars/` + this.$route.params.id)
             .then(({data}) => this.car = data)
-        }
+        },
+        edit(data) {
+            this.$http.defaults.headers['Authorization'] = `Kinvey ${AuthToken()}`
+            return this.$http.post(`/appdata/${requester.appKey}/cars/`+ this.$route.params.id, data) 
+                .then(({data}) => console.log(data))
+         }
 
     }
 }
