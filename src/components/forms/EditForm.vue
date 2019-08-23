@@ -42,7 +42,7 @@
 
 <script>
 import { carService } from '@/services/carServices'
-import { authenticate } from '@/services/authServices'
+// import { authenticate } from '@/services/authServices'
 
 export default {
     mixins: [carService],

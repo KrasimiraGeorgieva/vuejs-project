@@ -1,22 +1,25 @@
 <template>
     <nav>
         <template v-if="isAuthenticated">
-            <a class="active" href="/home-logged">Home</a>
+            <router-link
+                    :to="'/home-logged'"
+                    class="active"
+                    tag="a"
+                >
+                Home
+                </router-link>
             <router-link
                     :to="'/home-logged'"
                     tag="a"
                 >
                 All Listings
                 </router-link>
-            <!-- <a href="/home-logged">All Listings</a> -->
-            <!-- <a href="/my-listings">My Listings</a> -->
             <router-link
                     :to="'/create'"
                     tag="a"
                 >
                 Create Listing
                 </router-link>
-            <!-- <a href="/create">Create Listing</a> -->
             <div id="profile">
                 <a>Welcome username</a>
                 <a href="/logout" v-on:click.prevent="onLogoutClick">logout</a>
