@@ -24,7 +24,6 @@ export const authService = {
     created() {
         this.$root.$on('logged-in', authtoken => this.authtoken = authtoken)
         this.$root.$on('logged-out', () => this.authtoken = null)
-        this.$root.$on('updated', authtoken => this.authtoken = authtoken)
     }
 }
 

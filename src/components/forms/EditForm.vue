@@ -45,31 +45,16 @@ import { carService } from '@/services/carServices'
 import { authenticate } from '@/services/authServices'
 
 export default {
-    data(){
-        return{
-            title:'',
-            description:'',
-            brand:'',
-            year:'',
-            model:'',
-            imageUrl:'',
-            fuel:'',
-            price:'',
-            seller:''
-        }
-    },
     mixins: [carService],
     created(){
         this.getById();
     },
     methods: {
         onEditClick() {
-            
-            this.edit(this._id, this.title, this.description, this.brand, this.year, this.model, this.imageUrl, this.fuel, this.price, this.seller)
-            .then(userData => {
-                //console.log("edit")
-                    this.$root.$emit('updated', userData.authtoken,userData)
-                    // this._id, this.title, this.description, this.brand, this.year, this.model, this.imageUrl, this.fuel, this.price, this.seller = sessionStorage.getItem('username') );
+             this.edit({
+                 _id: this._id, title: this.car.title, description: this.car.description, brand: this.car.brand, year: this.car.year, model: this.car.model, imageUrl: this.car.imageUrl, fuel:this.car.fuel, price: this.car.price, seller: this.seller = sessionStorage.getItem('username')
+                 }).then(carData => {
+                    this.$root.$emit('updated', {_id: this._id, title: this.title, description: this.description, brand: this.brand, year: this.year, model: this.model, imageUrl: this.imageUrl, fuel:this.fuel, price: this.price, seller: this.seller})
                     this.$router.push('/home-logged')
                 })
         }
