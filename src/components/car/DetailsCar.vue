@@ -11,7 +11,7 @@
                 <h3>Fuel: {{car.fuel}}</h3>
                 <h3>Price: {{car.price}}$</h3>
             </div>
-            <div class="listings-buttons">
+            <div class="listings-buttons" v-if="username == car.seller">
                 <router-link
                     :to="'/edit/'+ car._id"
                     tag="a"
@@ -19,8 +19,14 @@
                 >
                 Edit
                 </router-link>
-                <a href="#" class="button-list">Delete</a>
-
+                
+                <router-link
+                    :to="'/delete/'+ car._id"
+                    tag="a"
+                    class="button-list"
+                >
+                Delete
+                </router-link>
 
             </div>
             <p id="description-title">Description:</p>
@@ -33,6 +39,7 @@
 
 <script>
 import { carService } from '@/services/carServices'
+import { authenticate } from '@/services/authServices'
 
 export default {
     mixins: [carService],

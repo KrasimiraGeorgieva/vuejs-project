@@ -26,7 +26,7 @@
                                 Details
                                 </router-link>
                             </li>
-                            <li class="action">
+                            <li class="action" v-if="username == car.seller">
                                 <router-link
                                     :to="'/edit/'+ car._id"
                                     tag="a"
@@ -35,7 +35,7 @@
                                 Edit
                                 </router-link>
                             </li>
-                            <!-- <li class="action">
+                            <!-- <li class="action" v-if="username == car.seller">
                                 <a href="#" class="button-carDetails">delete</a>
                             </li> -->
 
@@ -52,6 +52,8 @@
 
 <script>
 import { carService } from '@/services/carServices'
+import { authenticate } from '@/services/authServices'
+
 export default {
     mixins: [carService],
     created(){

@@ -8,6 +8,7 @@ import Login from "@/components/forms/LoginForm";
 import Create from "@/components/forms/CreateForm";
 import Edit from "@/components/forms/EditForm";
 import Details from "@/components/car/DetailsCar";
+import Delete from "@/components/car/DeleteCar";
 
 Vue.use(Router);
 
@@ -55,10 +56,10 @@ export default new Router({
       name: "edit",
       component: Edit
     },
-    // {
-    //   path: "/delete/:id",
-    //   name: "delete",
-    //   component: Delete
-    // },
+    {
+      path: "/delete/:id",
+      name: "delete",
+      component: Delete
+    },
   ]
 });
