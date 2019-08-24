@@ -44,6 +44,7 @@ import { authenticate } from '@/services/authServices'
 export default {
     data() {
         return {
+            username: sessionStorage.getItem('username')
         };
     },
     mixins: [authenticate],

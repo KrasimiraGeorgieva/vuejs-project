@@ -5,18 +5,33 @@
                 <h1>Register</h1>
                 <p>Please fill in this form to create an account.</p>
                 <hr>
-
+                <br />
                 <p>Username</p>
-                <input type="text" placeholder="Enter Username" v-model="$v.username.$model" name="username" required>
-
+                <input type="text" placeholder="Enter Username" v-model="$v.formResponses.username.$model" name="username">
+                <p v-if="errors" class="error">
+                    <span class="error animated flipInY" v-if="!$v.formResponses.username.required">This field is required</span>
+                    <span class="error animated flipInY" v-if="!$v.formResponses.username.minLength">Field must have at least {{ $v.formResponses.username.$params.minLength.min }} characters.</span>
+                    <span class="error animated flipInY" v-if="!$v.formResponses.username.maxLength">Field must not exceed {{ $v.formResponses.username.$params.maxLength.max }} characters.</span>
+                </p>
+                <br />
                 <p>Password</p>
-                <input type="password" placeholder="Enter Password" v-model="$v.password.$model" name="password" required>
-
+                <input type="password" placeholder="Enter Password" v-model="$v.formResponses.password.$model" name="password" required>
+                <p v-if="errors" class="error">
+                    <span class="error animated flipInY" v-if="!$v.formResponses.password.required">This field is required</span>
+                    <span class="error animated flipInY" v-if="!$v.formResponses.password.minLength">Field must have at least {{ $v.formResponses.password.$params.minLength.min }} characters.</span>
+                    <span class="error animated flipInY" v-if="!$v.formResponses.password.maxLength">Field must not exceed {{ $v.formResponses.password.$params.maxLength.max }} characters.</span>
+                </p>
+                <br />
                 <p>Repeat Password</p>
-                <input type="password" placeholder="Repeat Password" v-model="$v.repeatPass.$model" name="repeatPass" required>
+                <input type="password" placeholder="Repeat Password" v-model="$v.formResponses.repeatPass.$model" name="repeatPass" required>
+                <p v-if="errors" class="error">
+                    <span class="error animated flipInY" v-if="!$v.formResponses.repeatPass.required">This field is required</span><br />
+                    <span class="error animated flipInY" v-if="!$v.formResponses.repeatPass.sameAsPassword">The passwords do not match.</span>
+                </p>
+                <br />
                 <hr>
 
-                <button type="submit" class="registerbtn" :disabled="$v.$error">Register</button>
+                <button type="submit" class="registerbtn submit" @click.prevent="onRegisterClick">Register</button>
             </div>
             <div class="container signin">
                 <p>Already have an account?
@@ -28,41 +43,57 @@
 
 <script>
 import { authenticate } from '@/services/authServices'
-import { required,minLength,maxLength,sameAs } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, sameAs } from 'vuelidate/lib/validators'
 
 export default {
     data(){
         return{
-        username:'',
-        password:'',
-        repeatPass:'',
+            uiState: "submit not clicked",
+            errors: false,
+            empty: true,
+
+            formResponses: {
+                username:'',
+                password:'',
+                repeatPass:'',
+            }
         }
     },
     mixins: [authenticate],
     validations:{
-        username:{
-            required,
-            minLength: minLength(3),
-            maxLength: maxLength(20)
-        },
-        password:{
-            required,
-            minLength: minLength(3),
-            maxLength: maxLength(20)
-        },
-        repeatPass:{
-            required,
-            sameAsPassword: sameAs('password')
-        },
+        formResponses:{
+            username:{
+                required,
+                minLength: minLength(3),
+                maxLength: maxLength(20)
+            },
+            password:{
+                required,
+                minLength: minLength(3),
+                maxLength: maxLength(20)
+            },
+            repeatPass:{
+                required,
+                sameAsPassword: sameAs('password')
+            },
+        }
     },
     methods: {
         onRegisterClick() {
-            this.register(this.username, this.password)
-            .then(userData => {
+            this.formTouched = !this.$v.formResponses.$anyDirty;
+            this.errors = this.$v.formResponses.$anyError;
+            this.uiState = "submit clicked";
+                if (this.errors === false && this.formTouched === false) {
+                this.register(this.formResponses.username, this.formResponses.password)
+                
+                .then(userData => {
                     this.$root.$emit('logged-in', userData.authtoken);
                     this.$router.push('/home-logged');
                 })
-        }
+
+                this.uiState = "form submitted";
+                }
+        },
     }
 }
 </script>
@@ -81,7 +112,7 @@ export default {
 input[type=text], input[type=number], input[type=password] {
     width: 50%;
     padding: 15px;
-    margin: 5px 0 22px 0;
+    margin: 5px 0px 22px;
     display: inline-block;
     border: none;
     background: #f1f1f1;
@@ -128,4 +159,10 @@ a {
     background-color: #f1f1f1;
     text-align: center;
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
 </style>
