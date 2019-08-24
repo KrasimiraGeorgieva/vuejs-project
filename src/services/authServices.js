@@ -5,7 +5,6 @@ const authString = btoa(`${requester.appKey}:${requester.appSecret}`)
 const saveSession = (userData) => {
     sessionStorage.setItem('authtoken', userData.authtoken)
     sessionStorage.setItem('username', userData.username)
-    //sessionStorage.setItem('userId', userData.id)
 
     return userData;
 }
@@ -13,7 +12,8 @@ const saveSession = (userData) => {
 export const authService = {
     data() {
         return {
-            authtoken: sessionStorage.getItem('authtoken')
+            authtoken: sessionStorage.getItem('authtoken'),
+            username: sessionStorage.getItem('username')
         }
     },
     computed: {
@@ -41,13 +41,11 @@ export const authenticate = {
                 password
            }).then(({data}) => saveSession({
             username: data.username,
-            authtoken: data._kmd.authtoken,
-            //userId: data._id.authtoken
+            authtoken: data._kmd.authtoken
             }));
         },
         logout() {
-            return this.$http.post(`/user/${requester.appKey}/_logout`
-            )
+            return this.$http.post(`/user/${requester.appKey}/_logout`)
         }
     },
     created() {

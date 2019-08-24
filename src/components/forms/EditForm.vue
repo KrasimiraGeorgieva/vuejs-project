@@ -50,13 +50,30 @@ export default {
         this.getById();
     },
     methods: {
-        onEditClick() {
-             this.edit({
-                 _id: this._id, title: this.car.title, description: this.car.description, brand: this.car.brand, year: this.car.year, model: this.car.model, imageUrl: this.car.imageUrl, fuel:this.car.fuel, price: this.car.price, seller: this.seller = sessionStorage.getItem('username')
-                 }).then(carData => {
-                    this.$root.$emit('updated', {_id: this._id, title: this.title, description: this.description, brand: this.brand, year: this.year, model: this.model, imageUrl: this.imageUrl, fuel:this.fuel, price: this.price, seller: this.seller})
+        onEditClick() { this.edit({
+                _id: this._id,
+                title: this.car.title,
+                description: this.car.description,
+                brand: this.car.brand,
+                year: this.car.year,
+                model: this.car.model,
+                imageUrl: this.car.imageUrl,
+                fuel:this.car.fuel,
+                price: this.car.price,
+                seller: this.seller = sessionStorage.getItem('username')
+                }).then(carData => {
+                    this.$root.$emit('updated', {_id: this._id,
+                    title: this.title,
+                    description: this.description,
+                    brand: this.brand,
+                    year: this.year,
+                    model: this.model,
+                    imageUrl: this.imageUrl,
+                    fuel:this.fuel, price: this.price,
+                    seller: this.seller})
+
                     this.$router.push('/home-logged')
-                })
+            })
         }
     }
 }

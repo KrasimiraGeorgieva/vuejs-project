@@ -21,7 +21,7 @@
                 Create Listing
                 </router-link>
             <div id="profile">
-                <a>Welcome username</a>
+                <a>Welcome {{username}}</a>
                 <a href="/logout" v-on:click.prevent="onLogoutClick">logout</a>
             </div>
         </template>
