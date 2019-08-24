@@ -4,7 +4,7 @@
 
         <div id="listings">
 
-            <div class="listing" v-for="car in cars" :key="car._id">
+            <div class="listing animated zoomInDown" v-for="car in cars" :key="car._id">
                 <p>{{car.title}}</p>
                 <img :src="car.imageUrl">
                 <h2>Brand: {{car.brand}}</h2>
@@ -23,9 +23,8 @@
                                     tag="a"
                                     class="button-carDetails"
                                 >
-                                details
+                                Details
                                 </router-link>
-                                <!-- <a v-bind:href="'/details/'+ car._id" class="button-carDetails">Details</a> -->
                             </li>
                             <li class="action">
                                 <router-link
@@ -33,9 +32,8 @@
                                     tag="a"
                                     class="button-carDetails"
                                 >
-                                edit
+                                Edit
                                 </router-link>
-                                <!-- <a href="/edit/:id" class="button-carDetails">edit</a> -->
                             </li>
                             <!-- <li class="action">
                                 <a href="#" class="button-carDetails">delete</a>

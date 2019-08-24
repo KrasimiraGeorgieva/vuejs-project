@@ -27,7 +27,13 @@
         </template>
         
         <template v-else>
-            <a class="active" href="/">Home</a>
+            <router-link
+                    :to="'/'"
+                    class="active"
+                    tag="a"
+                >
+                Home
+                </router-link>
         </template>
     </nav>
 </template>

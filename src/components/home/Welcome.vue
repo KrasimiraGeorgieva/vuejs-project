@@ -1,9 +1,9 @@
 <template>
    <div id="main">
         <div id="welcome-container">
-            <h1>Welcome To Car Tube</h1>
-            <img src="@/assets/finance-car.png" alt="carIntro">
-            <h2>Login or register to check out our listings or to make one</h2>
+            <h1 class="animated zoomIn">Welcome To Car Tube</h1>
+            <img class="animated bounceInRight" src="@/assets/finance-car.png" alt="carIntro">
+            <h2 class="animated zoomIn">Login or register to check out our listings or to make one</h2>
             <div id="button-div">
                 <router-link :to="'/login'" tag="a" class="button">Login</router-link>
                 <router-link :to="'/register'" tag="a" class="button">Register</router-link>
@@ -63,5 +63,9 @@ h2 {
     padding-top: 10px;
     width: 37%;
     margin: auto;
+}
+
+img {
+    animation-delay: 1s;
 }
 </style>
