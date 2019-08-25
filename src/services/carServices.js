@@ -22,17 +22,11 @@ export const carService = {
         },
         edit({_id, title, description, brand, year, model, imageUrl,fuel, price, seller}) {
             this.$http.defaults.headers['Authorization'] = `Kinvey ${AuthToken()}`
-            return this.$http.put(`/appdata/${requester.appKey}/cars/`+ this.$route.params.id, {_id, title, description, brand, year, model, imageUrl, fuel, price, seller})
-            // .then(function (response) {
-            //     console.log(response);
-            //   }) 
+            return this.$http.put(`/appdata/${requester.appKey}/cars/`+ this.$route.params.id, {_id, title, description, brand, year, model, imageUrl, fuel, price, seller}) 
         },
         create({title, description, brand, year, model, imageUrl,fuel, price, seller}){
             this.$http.defaults.headers['Authorization'] = `Kinvey ${AuthToken()}`
             return this.$http.post(`/appdata/${requester.appKey}/cars`,{title, description, brand, year, model, imageUrl,fuel, price, seller})
-                // .then(function (response) {
-                //     console.log(response);
-                // }) 
         }
     }
 }
