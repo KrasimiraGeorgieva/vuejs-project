@@ -16,7 +16,7 @@ The application should have:
 * Apply **error handling** and **data validation** to avoid crashes when invalid data is entered
 * Good usability (easy to use UI)
 
-## Build technologies:
+## Build technologies
 
 ### JavaScript
 * **VueJS** framework
@@ -24,7 +24,7 @@ The application should have:
 * **Vuex** state management 
 * **Animations and Transitions**
 
-## Required functionalities:
+## Required functionalities
 
 * Wellcome page with Animations
 * User registration
