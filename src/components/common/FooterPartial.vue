@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <p>Created by MarikMayhem</p>
+        <p>Created by Krasimira Georgieva</p>
     </div>
 </template>
 
