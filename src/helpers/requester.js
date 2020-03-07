@@ -1,6 +1,6 @@
 export default{
-    appKey: "kid_S1MmvNu7B",
-    appSecret: "4cf3d97532ca476189beec148dafbcd8"
+    appKey: "kid_rJ5T4i-r8",
+    appSecret: "88a05c4aeb41462e9cabb286607865f6"
 }
 
 // const requester = function () {
